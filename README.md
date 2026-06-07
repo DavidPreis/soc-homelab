@@ -2,6 +2,8 @@
 
 A hands-on Security Operations Center (SOC) homelab that simulates real attack scenarios and detection workflows inside an isolated virtual environment. Built with VMware, Kali Linux, Windows 10, and Splunk.
 
+**FULL DEMO VIDEO: https://www.youtube.com/watch?v=92BU_cwrwBY**
+
 > **Host specs used in this build:** Windows 11 host, 16 GB RAM, VMware Workstation
 
 ---
@@ -22,36 +24,6 @@ A hands-on Security Operations Center (SOC) homelab that simulates real attack s
 12. [Resources](#resources)
 
 ---
-
-## Architecture Overview
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                INTERNAL NETWORK (ISOLATED)               │
-│                   VMnet (Host-Only)                      │
-│                                                          │
-│  ┌───────────────┐   Attacks   ┌──────────────────────┐ │
-│  │ KALI LINUX    │ ──────────► │  WINDOWS 10 VICTIM   │ │
-│  │ (Attacker)    │             │  + Sysmon             │ │
-│  │               │             │  + Splunk Forwarder   │ │
-│  │ • nmap        │             └──────────┬───────────┘ │
-│  │ • Metasploit  │                        │ Logs        │
-│  └───────────────┘                        ▼             │
-│                                ┌──────────────────────┐ │
-│                                │  SPLUNK SERVER       │ │
-│                                │  (Ubuntu 24.04)      │ │
-│                                │  • Ingestion         │ │
-│                                │  • Dashboards        │ │
-│                                │  • Alerts            │ │
-│                                └──────────────────────┘ │
-└─────────────────────────────────────────────────────────┘
-                          │
-                 ┌────────▼────────┐
-                 │    HOST PC      │
-                 │ (Analyst View)  │
-                 │ Browser → Splunk│
-                 └─────────────────┘
-```
 
 ---
 
